@@ -5,10 +5,12 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class BasePage {
 
 	private WebDriver driver;
+	private WebDriverWait webDriverWait;
 
 	public BasePage() {
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
@@ -50,6 +52,10 @@ public abstract class BasePage {
 
 	public String getText(By locator) {
 		return this.driver.findElement(locator).getText();
+	}
+
+	public String getTextByAttribute(By locator, String attributeName) {
+		return this.driver.findElement(locator).getAttribute(attributeName);
 	}
 
 }
