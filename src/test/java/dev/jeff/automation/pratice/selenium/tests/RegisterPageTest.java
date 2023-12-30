@@ -25,7 +25,7 @@ class RegisterPageTest {
 	}
 
 	@Test
-	void test() {
+	void login() {
 		// when
 		this.registerPage.insertEmailToRegister();
 
@@ -33,6 +33,20 @@ class RegisterPageTest {
 		String expected = "jeffersonjunior@gmail.com";
 		String actual = this.registerPage.getEmailNewAccount();
 		Assertions.assertEquals(expected, actual);
+	}
+
+	@Test
+	void registerAccount() {
+		// when
+		this.registerPage.fillOutForm();
+
+		// then
+		String expected = "ACCOUNT CREATED!";
+		String actual = this.registerPage.getWelcomemessage();
+		Assertions.assertEquals(expected, actual);
+
+		String actualUrl = this.registerPage.getCurrentyUrl();
+		Assertions.assertFalse(this.URL.equals(actualUrl));
 	}
 
 }
